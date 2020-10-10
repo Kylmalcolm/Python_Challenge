@@ -59,10 +59,19 @@ print("----------------------------")
 print("Total Months: " + str(counter))
 print("Total: $" + str(total))
 print("Average Change: $" + str(avg_changes))
-print("Greatest Increase in Profits: " + str(increase_date) + " ($" + str(increase) + ")")
-print("Greatest Decrease in Profits: " + str(decrease_date) + " ($" + str(decrease) + ")")
+print("Greatest Increase in Profits: " + str(increase_date) + " $" + str(increase))
+print("Greatest Decrease in Profits: " + str(decrease_date) + " $" + str(decrease))
+
+filename = 'PyBank_Output.txt'
+
+with open(filename, 'w') as file_object:
+    file_object.write("Financial Analysis\n")
+    file_object.write("----------------------------\n")
+    file_object.write("Total Months: " + str(counter) +"\n")
+    file_object.write("Total: $" + str(total) + "\n")
+    file_object.write("Average Change: $" + str(avg_changes) + "\n")
+    file_object.write("Greatest Increase in Profits: " + str(increase_date) + " $" + str(increase) + "\n")
+    file_object.write("Greatest Decrease in Profits: " + str(decrease_date) + " $" + str(decrease) + "\n")
 
 #sum_profits = sum(profits)
 #print(sum_profits)
-
-#DON'T FORGET THE EXPORT STEP!!!!!
