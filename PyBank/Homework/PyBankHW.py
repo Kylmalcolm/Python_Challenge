@@ -3,35 +3,32 @@ import csv
 
 budget_csv = os.path.join("..", "Resources", "budget_data.csv")
 
-#def budget_info(budget_data):
-
-   #date = str(budget_data[0])
-   #profit = int(budget_data[1])
-
-   #return
-
-
 with open(budget_csv, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     header = next(csvreader)
 
-    dates = []
-    profits = []
-    changes = []
+    #dates = []
+    #profits = []
+    #changes = []
+        #I eventually figured out how to use lists for this, but stuck with my original solution
+        #and left them as comments because I need to sleep sometime tonight
 
     counter = 0
     total = 0
     increase = 0
     decrease = 0
+    diff_profit = 0
+    sum_changes = 0
 
     for row in csvreader:
+
         date = row[0]
-        dates.append(date)
+        #dates.append(row[0])
 
         profit = row[1]
-        profits.append(int(profit))
+        #profits.append(int(row[1]))
 
-        counter = counter +1
+        counter = counter + 1
         total = total + int(profit)
 
         if int(increase) > int(profit):
@@ -46,20 +43,26 @@ with open(budget_csv, 'r') as csvfile:
             decrease = int(profit)
             decrease_date = date
         
-    #for profit in profits_list:
-        #change = 
+        if diff_profit == 0:
+            diff_profit = int(profit)
+        else:
+            diff_profit = int(profit) - int(diff_profit)
+            #changes.append(int(diff_profit))
+            sum_changes = int(sum_changes) + int(diff_profit)
+            diff_profit = int(profit)
+            
+avg_changes = sum_changes / (int(counter) - 1)
+avg_changes = round(avg_changes,2)
 
 print("Financial Analysis")
 print("----------------------------")
 print("Total Months: " + str(counter))
 print("Total: $" + str(total))
-print("Average Change: $")
-print("Greatest Increase in Profits: " + str(increase_date) + " $" + str(increase))
-print("Greatest Decrease in Profits: " + str(decrease_date) + " $" + str(decrease))
+print("Average Change: $" + str(avg_changes))
+print("Greatest Increase in Profits: " + str(increase_date) + " ($" + str(increase) + ")")
+print("Greatest Decrease in Profits: " + str(decrease_date) + " ($" + str(decrease) + ")")
 
-print(changes)
+#sum_profits = sum(profits)
+#print(sum_profits)
 
 #DON'T FORGET THE EXPORT STEP!!!!!
-
-        #in a loop, create a varaible outside of loop, set to zero,
-        # and add 1 every time I'm in the loop
