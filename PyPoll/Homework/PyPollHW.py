@@ -11,22 +11,32 @@ with open(budget_csv, 'r') as csvfile:
 
     counter = 0
 
+    counter0 = 0
+    counter1 = 0
+    counter2 = 0
+    counter3 = 0
+
     for row in csvreader:
-        voter = row[0]
-        county = row[1]
+
         candidate = row[2]
 
         counter = counter + 1
-        candidate_list.append(candidate)
+        candidate_list.append(candidate)   
 
-individual_votes = 0        
-candidate_dict = dict.fromkeys(candidate_list)
+        candidate_list = list(dict.fromkeys(candidate_list))
 
-# for row in csvreader:
-#     if candidate in candidate_dict:
-#         candidate_dict[candidate] = individual_votes + 1
+        if candidate == candidate_list[0]:
+            counter0 = counter0 + 1
+        elif candidate == candidate_list[1]:
+            counter1 = counter1 + 1
+        elif candidate == candidate_list[2]:
+            counter2 = counter2 + 1
+        elif candidate == candidate_list[3]:
+            counter3 = counter3 + 1
 
 print(counter)
-print(candidate_dict)
-
-        
+print(candidate_list)
+print(counter0)
+print(counter1)
+print(counter2)
+print(counter3)
